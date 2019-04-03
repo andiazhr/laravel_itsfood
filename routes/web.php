@@ -12,13 +12,26 @@
 */
 
 Route::get('/', function () {
-    return view('Dasboard.content');
+    return view('welcome');
 });
+//menu
+Route::resource('menu', 'MenuController');
 
-Route::resource('makanan', 'MakananController');
+//pembelian
+Route::resource('itsfood', 'PembelianController');
 
-//film
-Route::resource('minuman', 'MinumanController');
+Route::get('galery', 'PembelianController@galery');
 
-//transaksi peminjaman
-Route::resource('pembelian', 'PembelianController');
+Route::get('search', 'PembelianController@search');
+
+Route::post('pesan', 'PembelianController@store');
+
+Route::get('masuk', 'UsersPelangganController@index');
+
+Route::get('daftar', 'UsersPelangganController@create');
+Route::post('daftar', 'UsersPelangganController@store');
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

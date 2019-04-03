@@ -10,12 +10,12 @@ class Pembelian extends Model
     protected $primaryKey = 'id_pembelian';
     protected $fillable = [
         'id_pelanggan',
-        'id_makanan',
-        'id_minuman',
-        'jumbel_makanan',
-        'jumbel_minuman',
+        'id_menu',
+        'harga_menu',
+        'no_hp_pelanggan',
         'alamat_pelanggan',
-        'total_pembelian'
+        'total_pembelian',
+        'tanggal_pembelian'
       ];
     public $timestamps = false;
 }

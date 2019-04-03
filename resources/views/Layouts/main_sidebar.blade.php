@@ -6,7 +6,7 @@
           <img src="{{ asset('assetsadmin/dist/img/pemudaa.png') }}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Raden Andi Azhar Hakim</p>
+          <p>{{ Auth::user()->name }}</p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
@@ -44,8 +44,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ url('makanan') }}"><i class="fa fa-circle-o"></i> Makanan</a></li>
-            <li><a href="{{ url('minuman') }}"><i class="fa fa-circle-o"></i> Minuman</a></li>
+            <li><a href="{{ url('menu') }}"><i class="fa fa-circle-o"></i> Menu</a></li>
             <li><a href="{{ url('pembelian') }}"><i class="fa fa-circle-o"></i> Pembelian</a></li>
             <li><a href="{{ url('users') }}"><i class="fa fa-circle-o"></i> Users</a></li>
             <li><a href="{{ url('users_pelanggan') }}"><i class="fa fa-circle-o"></i> Users Pelanggan</a></li>

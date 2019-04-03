@@ -18,6 +18,13 @@
                 font-weight: 200;
                 height: 100vh;
                 margin: 0;
+                width:100%;
+                height:750px;
+                background:url('/assets/images/friedrice1.jpg');
+                -webkit-background-size:100% 100%;
+                -moz-background-size:100% 100%;
+                -o-background-size:100% 100%;
+                background-size:100% 100%;
             }
 
             .full-height {
@@ -46,10 +53,11 @@
 
             .title {
                 font-size: 84px;
+                color: #fff;
             }
 
             .links > a {
-                color: #636b6f;
+                color: #fff;
                 padding: 0 25px;
                 font-size: 13px;
                 font-weight: 600;
@@ -81,17 +89,11 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Its Food
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="{{ url('itsfood') }}">Website</a>
                 </div>
             </div>
         </div>
