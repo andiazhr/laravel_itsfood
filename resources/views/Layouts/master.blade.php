@@ -278,5 +278,51 @@ $('#btnAlert').click(function(e){
 });
 </script>
 
+<script>
+  function checkTime(i) {
+  if (i < 10) {
+    i = "0" + i;
+  }
+  return i;
+}
+
+function startTime() {
+  var today = new Date();
+  var h = today.getHours();
+  var m = today.getMinutes();
+  var s = today.getSeconds();
+  // add a zero in front of numbers<10
+  m = checkTime(m);
+  s = checkTime(s);
+  document.getElementById('jam').innerHTML = h + ":" + m + ":" + s;
+  t = setTimeout(function() {
+    startTime()
+  }, 500);
+}
+startTime();
+    </script>
+
+<script type="text/javascript">
+        
+        $('.test').click(function () {
+           var postId = $(this).data('id');
+                swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this data!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonClass: 'btn-danger waves-effect waves-light',
+                confirmButtonText: "Delete",
+                cancelButtonText: "Cancel",
+                closeOnConfirm: true,
+                closeOnCancel: true
+                },
+                function(){
+                  window.location.href = "itsfood.delete" + postId;
+                });
+              });
+        
+          </script>
+
 </body>
 </html>

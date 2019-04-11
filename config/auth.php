@@ -44,7 +44,26 @@ return [
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
-            'hash' => false,
+        ],
+
+        'pelanggan' => [
+            'driver' => 'session',
+            'provider' => 'userspelanggan',
+        ],
+
+        'pelanggan-api' => [
+            'driver' => 'token',
+            'provider' => 'userspelanggan',
+        ],
+
+        'keranjang' => [
+            'driver' => 'session',
+            'provider' => 'keranjangs',
+        ],
+
+        'keranjang-api' => [
+            'driver' => 'token',
+            'provider' => 'keranjangs',
         ],
     ],
 
@@ -71,6 +90,15 @@ return [
             'model' => App\User::class,
         ],
 
+        'userspelanggan' => [
+            'driver' => 'eloquent',
+            'model' => App\UsersPelanggan::class,
+        ],
+
+        'keranjangs' => [
+            'model' => App\Keranjang::class,
+        ],
+
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
@@ -95,6 +123,12 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+
+        'userspelanggan' => [
+            'provider' => 'userspelanggan',
             'table' => 'password_resets',
             'expire' => 60,
         ],

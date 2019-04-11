@@ -12,7 +12,7 @@ class MenuController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(\Illuminate\Http\Request $request)
+    public function index(Request $request)
     {
         $daftar = Menu::when($request->menu, function ($query) use ($request) {
             $query->where('nama_menu', 'like', "%{$request->menu}%")
@@ -42,7 +42,6 @@ class MenuController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-
             'nama_menu'=> 'required',
             'tipe_menu' => 'required',
             'gambar_menu' => 'required',
@@ -60,7 +59,7 @@ class MenuController extends Controller
            {
                $gambar=$image->getClientOriginalName();
                $image->move(public_path().'/images/menu', $gambar);  
-               $data = $gambar;  
+               $data  = $gambar;  
            }
 
            foreach($request->file('icon_menu') as $image2)
@@ -71,7 +70,7 @@ class MenuController extends Controller
             }
         }
 
-         $daftar = new menu([
+         $daftar = new Menu([
             'nama_menu' => $request->get('nama_menu'),
             'tipe_menu'=> $request->get('tipe_menu'),
             'gambar_menu'=> $gambar,
@@ -122,9 +121,6 @@ class MenuController extends Controller
             'nama_menu' => 'required',
             'tipe_menu' => 'required',
             'gambar_menu' => 'required',
-            'gambar_menu.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10000',
-            'icon_menu' => 'required',
-            'icon_menu.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10000',
             'deskripsi_menu' => 'required',
             'harga_menu' => 'required|integer'
           ]);
@@ -170,6 +166,6 @@ class MenuController extends Controller
         $daftar = Menu::find($id_menu);
         $daftar->delete();
 
-        return redirect('menu')->with('succes', 'Data menu Terhapus');
+        return redirect('menu')->with('succes', 'Data Menu Dihapus');
     }
 }

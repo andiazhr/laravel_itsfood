@@ -46,7 +46,7 @@
 
                   <div class="form-group">
                   <label for="exampleInputFile">Masukkan Gambar Menu</label>
-                  <input type="file" name="gambar_menu[]" id="exampleInputFile">
+                  <input type="file" name="gambar_menu[]" class="form-control">
 
                   <p class="help-block">Ukuran Foto max 2mb.</p>
                   </div>
@@ -70,7 +70,7 @@
                       
                 <div class="form-group">
                   <label for="exampleInputFile">Masukkan Icon Menu</label>
-                  <input type="file" name="icon_menu[]">
+                  <input type="file" name="icon_menu[]" class="form-control">
 
                   <p class="help-block">Ukuran Foto max 2mb.</p>
                 </div>

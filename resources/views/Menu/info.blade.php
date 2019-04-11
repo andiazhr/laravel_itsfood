@@ -5,7 +5,7 @@
     <section class="content-header">
       <h1>
         Menu
-        <small>Form</small>
+        <small>Info</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="{{ url('menu') }}"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -37,9 +37,9 @@
             <!-- form start -->
               <div class="box-body">
               <center>
-              <img src="{{ asset('/images/menu/'. array_first(json_decode($daftar->gambar_menu))) }}" alt="" width="300px" height="200px"><br>
-              <h3>{{$daftar->nama_menu}} harga Rp. {{number_format($daftar->harga_menu)}}</h3>
-              <img src="{{ asset('/images/iconmenu/'. array_first(json_decode($daftar->icon_menu))) }}" alt="" width="100px" height="100px"><br>
+              <img src="{{ asset('/images/menu/'. $daftar->gambar_menu) }}" alt="" width="300px" height="200px"><br>
+              <h3>{{$daftar->nama_menu}} <br><br> <span class="label label-info"> Harga Rp. {{number_format($daftar->harga_menu)}}</span></h3>
+              <img src="{{ asset('/images/iconmenu/'. $daftar->icon_menu) }}" alt="" width="100px" height="100px"><br>
               <h4>
               <label for="">Deskripsi</label>  <br>
               {{$daftar->deskripsi_menu}}</h4>

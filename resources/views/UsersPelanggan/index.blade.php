@@ -2,13 +2,13 @@
 @section('content')
 <section class="content-header">
       <h1>
-        Transaksi Peminjaman Tables
+        Table Users Pelanggan
         <small>Index</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="#">Tables</a></li>
-        <li class="active">Transaksi Peminjaman</li>
+        <li class="active">Users Pelanggan</li>
       </ol>
     </section>
 
@@ -24,12 +24,11 @@
           <div class="box">
             <!-- /.box-header -->
             <div class="box-header">
-              <h3 class="box-title" style="margin: 0 20px 0 0">Transaksi Peminjaman</h3>
-              <a href="{{ url('transaksi_peminjaman/create') }}" class="btn btn-primary">+ &nbsp;Tambah Data</a>
+              <h3 class="box-title" style="margin: 0 20px 0 0">Users Pelanggan</h3>
               <div class="box-tools">
               <form action="{{ url()->current() }}">
                 <div class="input-group input-group-sm" style="width: 200px;">
-                  <input type="text" name="transaksi" class="form-control pull-right" placeholder="Search Kategori">
+                  <input type="text" name="pelanggan" class="form-control pull-right" placeholder="Search User Pelanggan">
 
                   <div class="input-group-btn">
                     <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
@@ -42,43 +41,33 @@
               <table class="table table-hover">
                 <tr>
                     <th>No</th>
-                    <th>Judul Film</th>
-                    <th>Nama Peminjam</th>
-                    <th>No KTP</th>
-                    <th>Foto KTP</th>
-                    <th>Tanggal Pinjam</th>
-                    <th>Tanggal Kembali</th>
-                    <th>Harga Sewa</th>
-                    <th>Status</th>
-                    <th>Tanggal Input Data</th>
-                    <th>Edit</th>
+                    <th>Nama</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Akun dibuat</th>
+                    <th>Akun diperbaharui</th>
                     <th>Delete</th>
                     <th>Info</th>
                 </tr>
-                @foreach($film as $nomor => $rental)
+                @foreach($pelanggans as $nomor => $pelanggan)
                     <tr>
                         <td>{{$nomor +1}}</td>
-                        <td>{{$rental->judul_film}}</td>
-                        <td>{{$rental->nama_peminjam}}</td>
-                        <td>{{$rental->no_ktp}}</td>
-                        <td><img src="{{ asset('/images/'. array_first(json_decode($rental->foto_ktp))) }}" alt="" width="50px" height="50px"></td>
-                        <td>{{$rental->tanggal_pinjam}}</td>
-                        <td>{{$rental->tanggal_kembali}}</td>
-                        <td>{{$rental->harga_sewa}}</td>
-                        <td>{{$rental->status}}</td>
-                        <td>{{$rental->tanggal_input_data_peminjaman}}</td>
+                        <td>{{$pelanggan->nama_pelanggan}}</td>
+                        <td>{{$pelanggan->username}}</td>
+                        <td>{{$pelanggan->email_pelanggan}}</td>
+                        <td>{{$pelanggan->password}}</td>
+                        <td>{{$pelanggan->created_at}}</td>
+                        <td>{{$pelanggan->updated_at}}</td>
                         <td>
-                            <a href="{{ route('transaksi_peminjaman.edit',$rental->id_transaksi_peminjaman)}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
-                        </td>
-                        <td>
-                          <form action="{{ route('transaksi_peminjaman.destroy', $rental->id_transaksi_peminjaman)}}" method="post">
+                          <form action="{{ route('userspelanggan.destroy', $pelanggan->id_pelanggan)}}" method="post">
                               @csrf
                               @method('DELETE')
                               <button onclick="return confirm('Yakin ingin menghapus data?')" class="btn btn-danger btn-sm" type="submit"><i class="fa fa-trash"></i></button>
                           </form>
                         </td>
                         <td>
-                          <a href="{{ route('transaksi_peminjaman.show',$rental->id_transaksi_peminjaman)}}" class="btn btn-info btn-sm"><i class="fa fa-info"></i></a>
+                          <a href="{{ route('userspelanggan.show',$pelanggan->id_pelanggan)}}" class="btn btn-info btn-sm"><i class="fa fa-info"></i></a>
                         </td>
                     </tr>
                 @endforeach

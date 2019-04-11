@@ -60,20 +60,14 @@
                   </div>
                 </div>
 
-                <div class="col-md-3">
-                <div class="form-group">
-                  <label>Tipe Menu</label>
-                  <input type="text" class="form-control" name="tipe_menu" value="{{ $daftar->tipe_menu }}">
-                </div>
-                </div>
-                <div class="col-md-3">
+                <div class="col-md-6">
                 <div class="form-group">
                         <label>Ganti Tipe Menu</label>
                         <select name="tipe_menu" class="form-control select2" style="width: 100%;">
                           <option selected="-" disabled selected>Pilih Tipe Makanan</option>
-                          <option value="Makanan">Makanan</option>
-                          <option value="Minuman">Minuman</option>
-                          <option value="Makanan Ringan">Makanan Ringan</option>
+                            <option value="Makanan"<?=$daftar['tipe_menu'] == 'Makanan' ? ' selected="selected"' : '';?>>Makanan</option>                            
+                            <option value="Minuman"<?=$daftar['tipe_menu'] == 'Minuman' ? ' selected="selected"' : '';?>>Minuman</option>
+                            <option value="Makanan Ringan"<?=$daftar['tipe_menu'] == 'Makanan Ringan' ? ' selected="selected"' : '';?>>Makanan Ringan</option>
                         </select>
                       </div>
                       </div>

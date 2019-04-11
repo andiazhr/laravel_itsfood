@@ -225,7 +225,7 @@
 
                 <p>
                 {{ Auth::user()->name }}
-                  <small><?php echo date('d-M-Y') ?></small>
+                  <small><i class="fa fa-calendar"></i> <?php echo date('d M Y') ?> | <i class="fa fa-clock-o"></i> <span id="jam"></span></small>
                 </p>
               </li>
               <!-- Menu Body -->

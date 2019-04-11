@@ -3,17 +3,29 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\UsersPelanggan;
 
 class UsersPelangganController extends Controller
 {
+    
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('Frontend.login');
+        $pelanggans = UsersPelanggan::when($request->pelanggan, function ($query) use ($request) {
+            $query->where('nama_pelanggan', 'like', "%{$request->pelanggan}%")
+            ->orwhere('username', 'like', "%{$request->pelanggan}%")
+            ->orWhere('email_pelanggan', 'like', "%{$request->pelanggan}%");
+        })->get();
+
+        return view('UsersPelanggan.index', compact('pelanggans'));
     }
 
     /**
@@ -23,7 +35,7 @@ class UsersPelangganController extends Controller
      */
     public function create()
     {
-        return view('Frontend.register');
+        //
     }
 
     /**
@@ -43,9 +55,10 @@ class UsersPelangganController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id_pelanggan)
     {
-        //
+        $pelanggan = UsersPelanggan::find($id_pelanggan);
+        return view ('UsersPelanggan.info', compact('pelanggan'));
     }
 
     /**
@@ -77,8 +90,11 @@ class UsersPelangganController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id_pelanggan)
     {
-        //
+        $pelanggans = UsersPelanggan::find($id_pelanggan);
+        $pelanggans->delete();
+
+        return redirect('userspelanggan')->with('succes', 'Data User Pelanggan Dihapus');
     }
 }

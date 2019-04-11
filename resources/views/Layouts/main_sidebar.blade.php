@@ -33,7 +33,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="{{('master')}}"><i class="fa fa-circle-o"></i>Dashboard</a></li>
+            <li class="active"><a href="{{ url('home')}}"><i class="fa fa-circle-o"></i>Dashboard</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -47,7 +47,8 @@
             <li><a href="{{ url('menu') }}"><i class="fa fa-circle-o"></i> Menu</a></li>
             <li><a href="{{ url('pembelian') }}"><i class="fa fa-circle-o"></i> Pembelian</a></li>
             <li><a href="{{ url('users') }}"><i class="fa fa-circle-o"></i> Users</a></li>
-            <li><a href="{{ url('users_pelanggan') }}"><i class="fa fa-circle-o"></i> Users Pelanggan</a></li>
+            <li><a href="{{ url('userspelanggan') }}"><i class="fa fa-circle-o"></i> Users Pelanggan</a></li>
+            <li><a href="{{ url('saranmasukkan') }}"><i class="fa fa-circle-o"></i> Saran dan Masukkan</a></li>
           </ul>
         </li>
         

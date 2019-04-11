@@ -2,34 +2,28 @@
 @section('content')
 <section class="content-header">
       <h1>
-        Transaksi Peminjaman Tables
+      Table Pembelian
         <small>Index</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="#">Tables</a></li>
-        <li class="active">Transaksi Peminjaman</li>
+        <li class="active">Pembelian</li>
       </ol>
     </section>
 
     <!-- Main content -->
     <section class="content">
-    @if(session()->get('success'))
-              <div class="alert alert-success">
-                {{ session()->get('success') }}  
-              </div>
-      @endif
       <div class="row">
         <div class="col-xs-12">
           <div class="box">
             <!-- /.box-header -->
             <div class="box-header">
-              <h3 class="box-title" style="margin: 0 20px 0 0">Transaksi Peminjaman</h3>
-              <a href="{{ url('transaksi_peminjaman/create') }}" class="btn btn-primary">+ &nbsp;Tambah Data</a>
+              <h3 class="box-title" style="margin: 0 20px 0 0">Pembelian</h3>
               <div class="box-tools">
               <form action="{{ url()->current() }}">
                 <div class="input-group input-group-sm" style="width: 200px;">
-                  <input type="text" name="transaksi" class="form-control pull-right" placeholder="Search Kategori">
+                  <input type="text" name="pembelian" class="form-control pull-right" placeholder="Search Pembelian">
 
                   <div class="input-group-btn">
                     <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
@@ -42,43 +36,37 @@
               <table class="table table-hover">
                 <tr>
                     <th>No</th>
-                    <th>Judul Film</th>
-                    <th>Nama Peminjam</th>
-                    <th>No KTP</th>
-                    <th>Foto KTP</th>
-                    <th>Tanggal Pinjam</th>
-                    <th>Tanggal Kembali</th>
-                    <th>Harga Sewa</th>
-                    <th>Status</th>
-                    <th>Tanggal Input Data</th>
-                    <th>Edit</th>
+                    <th>Nama Pelanggan</th>
+                    <th>Nama Menu</th>
+                    <th>Harga Menu</th>
+                    <th>Jumlah Beli Menu</th>
+                    <th>No Hp</th>
+                    <th>Alamat</th>
+                    <th>Total Pembelian</th>
+                    <th>Tanggal Pembelian</th>
                     <th>Delete</th>
                     <th>Info</th>
                 </tr>
-                @foreach($film as $nomor => $rental)
+                @foreach($pembelians as $nomor => $pembelian)
                     <tr>
                         <td>{{$nomor +1}}</td>
-                        <td>{{$rental->judul_film}}</td>
-                        <td>{{$rental->nama_peminjam}}</td>
-                        <td>{{$rental->no_ktp}}</td>
-                        <td><img src="{{ asset('/images/'. array_first(json_decode($rental->foto_ktp))) }}" alt="" width="50px" height="50px"></td>
-                        <td>{{$rental->tanggal_pinjam}}</td>
-                        <td>{{$rental->tanggal_kembali}}</td>
-                        <td>{{$rental->harga_sewa}}</td>
-                        <td>{{$rental->status}}</td>
-                        <td>{{$rental->tanggal_input_data_peminjaman}}</td>
+                        <td>{{$pembelian->Pelanggan->nama_pelanggan}}</td>
+                        <td>{{$pembelian->Menu->nama_menu}}</td>
+                        <td>{{$pembelian->harga_menu}}</td>
+                        <td>{{$pembelian->jumbel_menu}}</td>
+                        <td>{{$pembelian->no_hp_pelanggan}}</td>
+                        <td>{{$pembelian->alamat_pelanggan}}</td>
+                        <td>{{$pembelian->total_pembelian}}</td>
+                        <td>{{$pembelian->tanggal_pembelian}}</td>
                         <td>
-                            <a href="{{ route('transaksi_peminjaman.edit',$rental->id_transaksi_peminjaman)}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
-                        </td>
-                        <td>
-                          <form action="{{ route('transaksi_peminjaman.destroy', $rental->id_transaksi_peminjaman)}}" method="post">
+                          <form action="{{ route('pembelian.destroy', $pembelian->id_pembelian)}}" method="post">
                               @csrf
                               @method('DELETE')
                               <button onclick="return confirm('Yakin ingin menghapus data?')" class="btn btn-danger btn-sm" type="submit"><i class="fa fa-trash"></i></button>
                           </form>
                         </td>
                         <td>
-                          <a href="{{ route('transaksi_peminjaman.show',$rental->id_transaksi_peminjaman)}}" class="btn btn-info btn-sm"><i class="fa fa-info"></i></a>
+                          <a href="{{ route('pembelian.show',$pembelian->id_pembelian)}}" class="btn btn-info btn-sm"><i class="fa fa-info"></i></a>
                         </td>
                     </tr>
                 @endforeach
@@ -98,3 +86,4 @@
           <!-- /.box -->
     </section>
 @endsection
+
