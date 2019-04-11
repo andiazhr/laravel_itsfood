@@ -167,45 +167,7 @@ class MenuController extends Controller
                 $daftar->harga_menu = $request->get('harga_menu');
                 $daftar->update();
             }
-        }
-
-        //   if(!empty($request->hasfile('gambar_menu')))
-        //     {
-        //         $daftar = Menu::find($id_menu);
-
-        //     foreach($request->file('gambar_menu') as $image)
-        //     {
-        //         unlink('/images/menu/'. $daftar->gambar_menu);
-        //         $gambar=$image->getClientOriginalName();
-        //         $image->move(public_path().'/images/menu', $gambar);
-        //     }
-
-        //     $daftar->nama_menu = $request->get('nama_menu');
-        //     $daftar->tipe_menu = $request->get('tipe_menu');
-        //     $daftar->gambar_menu = $gambar;
-        //     $daftar->deskripsi_menu = $request->get('deskripsi_menu');
-        //     $daftar->harga_menu = $request->get('harga_menu');
-        //     $daftar->update();
-        // }
-
-        // if(!empty($request->hasfile('icon_menu')))
-        // {
-        //     $daftar = Menu::find($id_menu);
-        //     foreach($request->file('icon_menu') as $image2)
-        //     {
-        //         unlink('/images/iconmenu'. $daftar->icon_menu);
-        //         $icon=$image2->getClientOriginalName();
-        //         $image2->move(public_path().'/images/iconmenu', $icon);
-        //     }
-
-        //     $daftar->nama_menu = $request->get('nama_menu');
-        //     $daftar->tipe_menu = $request->get('tipe_menu');
-        //     $daftar->icon_menu = $icon;
-        //     $daftar->deskripsi_menu = $request->get('deskripsi_menu');
-        //     $daftar->harga_menu = $request->get('harga_menu');
-        //     $daftar->update();
-        // }
-    
+        }    
           return redirect('menu')->with('success', 'Data Menu Diperbaharui');
     }
 

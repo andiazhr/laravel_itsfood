@@ -135,7 +135,7 @@ class ItsfoodController extends Controller
         
         auth('pelanggan')->login($userspelanggan);
         
-        return redirect()->to('/itsfood');
+        return redirect()->to('/itsfood')->with('login', 'Hai');
     }
 
     public function showLoginForm()

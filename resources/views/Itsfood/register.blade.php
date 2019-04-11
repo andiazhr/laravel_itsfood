@@ -171,6 +171,7 @@
 		</form>
     </div>
 </div>
+                            
 
     <div class="kolom12 content">
         <div class="kolom6 boxdaftar" style="margin: 35px 0 0 25%">
@@ -191,6 +192,8 @@
                     <div class="kolom12" style="margin:20px 0 0 0">
                         <div class="kolom3" style="text-align: right"><label for="nama" style="margin:5px 0 0 0; font-family:Raleway">Email</label></div>
                         <div class="kolom5" style="margin:0 20px 0 20px"><input type="email" class="form-control" name="email_pelanggan" id="email_pelanggan" placeholder="Email "></div>
+                    
+                    
                     </div>
 
                     <div class="kolom12" style="margin:20px 0 0 0">
