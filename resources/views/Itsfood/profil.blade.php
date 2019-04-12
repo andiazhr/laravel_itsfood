@@ -173,9 +173,9 @@
 </div>
 	
     <div class="kolom12 content">
-    <form role="form" enctype="multipart/form-data" method="post" action="{{ route('profil', auth('pelanggan')->user()->id_pelanggan) }}">
-        
-	
+	{{ (auth('pelanggan')->user()->nama_pelanggan) }} <br>
+	{{ (auth('pelanggan')->user()->username) }} <br>
+	{{ (auth('pelanggan')->user()->email_pelanggan) }}
     </div>
 </body>
 </html>

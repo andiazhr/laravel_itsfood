@@ -8,6 +8,8 @@
 	<link href="{{ asset('assets/ImageSelect.css') }}" rel="stylesheet">
 	<link href="{{ asset('assets/chosen.jquery.js') }}" rel="stylesheet">
 	<link href="{{ asset('assets/ImageSelect.jquery.js') }}" rel="stylesheet">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 	
     <title>itsFood</title>
     <style>
@@ -181,12 +183,18 @@
                 @csrf
                     <div class="kolom12">
                         <div class="kolom3" style="text-align: right"><label for="nama" style="margin:5px 0 0 0; font-family:Raleway">Nama</label></div>
-                        <div class="kolom5" style="margin:0 20px 0 20px"><input type="text" required class="form-control" name="nama_pelanggan" id="nama_pelanggan" placeholder="Nama anda"></div>
+                        <div class="kolom5" style="margin:0 20px 0 20px"><input type="text" autofocus required class="form-control" name="nama_pelanggan" id="nama_pelanggan" placeholder="Nama anda"></div>
                     </div>
 
                     <div class="kolom12" style="margin:20px 0 0 0">
                         <div class="kolom3" style="text-align: right"><label for="nama" style="margin:5px 0 0 0; font-family:Raleway">Username</label></div>
-                        <div class="kolom5" style="margin:0 20px 0 20px"><input type="text" required class="form-control" name="username" id="username" placeholder="Username"></div>
+                        <div class="kolom5" style="margin:0 20px 0 20px"><input type="text" required class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" id="username" value="{{ old('username') }}" placeholder="Username">
+                            @if ($errors->has('username'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('username') }}</strong>
+                                </span>
+                            @endif
+                        </div>
                     </div>
 
                     <div class="kolom12" style="margin:20px 0 0 0">
@@ -198,12 +206,18 @@
 
                     <div class="kolom12" style="margin:20px 0 0 0">
                         <div class="kolom3" style="text-align: right"><label for="nama" style="margin:5px 0 0 0; font-family:Raleway">Password</label></div>
-                        <div class="kolom5" minlength="8" style="margin:0 20px 0 20px"><input type="password" class="form-control" name="password" id="password" placeholder="Password"></div>
+                        <div class="kolom5" minlength="8" style="margin:0 20px 0 20px"><input type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" id="password" placeholder="Password">
+                            @if ($errors->has('password'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('password') }}</strong>
+                                </span>
+                            @endif
+                        </div>
                     </div>
 
                     <div class="kolom12" style="margin:20px 0 0 0">
                         <div class="kolom3" style="text-align: right"><label for="nama" style="margin:5px 0 0 0; font-family:Raleway">Konfirmasi Password</label></div>
-                        <div class="kolom5" minlength="8" style="margin:0 20px 0 20px"><input type="password" class="form-control" name="konfirmasi_pass" id="konfirmasi_pass" placeholder="Konfirmasi Password">
+                        <div class="kolom5" minlength="8" style="margin:0 20px 0 20px"><input type="password" class="form-control" name="password_confirmation" id="password" placeholder="Konfirmasi Password">
                     </div>
             
                     <div class="kolom12" style="margin: 10px 0 0 29%;">Sudah punya akun? <a href="{{ route('masuk')}}" class="disini">Klik disini </a></div>

@@ -8,6 +8,8 @@
 	<link href="{{ asset('assets/ImageSelect.css') }}" rel="stylesheet">
 	<link href="{{ asset('assets/chosen.jquery.js') }}" rel="stylesheet">
 	<link href="{{ asset('assets/ImageSelect.jquery.js') }}" rel="stylesheet">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 	
     <title>itsFood</title>
     <style>
@@ -171,8 +173,19 @@
 		</form>
     </div>
 </div>
-	
+
+    @if(session()->get('fail'))
+			<div class="kolom12">
+				<div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-3" style="text-align:center; font-size:20px; top:30px;">
+              		<div class="alert alert-danger">
+                		{{ session()->get('fail') }} <img src="{{ asset ('assets/images/attention.png') }}" alt="Jet" style="width:36px;height:36px;">
+              		</div>
+			  	</div>
+			</div>
+     	@endif
+
     <div class="kolom12 content">
+
     <div class="kolom6 boxdaftar" style="margin: 35px 0 0 25%">
             <div class="kolom12" style="margin:20px 0 10px 40px">
             <p style="color:#fff; font-family:Sofia; font-size: 20px"><img src="{{ asset ('assets/images/chickenleg.png') }}" alt="Jet" width="67px" height="67px" style="margin:0 10px 0 170px">Masuk Its Food</p>
@@ -180,7 +193,7 @@
                     @csrf
                     <div class="kolom12" style="margin:20px 0 0 0">
                         <div class="kolom3" style="text-align: right"><label for="nama" style="margin:5px 0 0 0; font-family:Raleway">Username</label></div>
-                        <div class="kolom5" style="margin:0 20px 0 20px"><input type="text" required class="form-control" name="username" id="username" placeholder="Username"></div>
+                        <div class="kolom5" style="margin:0 20px 0 20px"><input type="text" autofocus required class="form-control" name="username" id="username" placeholder="Username"></div>
                     </div>
 
                     <div class="kolom12" style="margin:20px 0 0 0">
@@ -196,5 +209,7 @@
             </div>
         </div>
     </div>
+
+    <script>$('div.alert').delay(5000).slideUp(300);</script>
 </body>
 </html>

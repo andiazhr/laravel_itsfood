@@ -57,6 +57,10 @@ class ItsfoodController extends Controller
      */
     public function store(Request $request)
     {       
+        if (is_null(auth('pelanggan')->user()))
+        {
+            return view('itsfood.login');
+        }
         $id_menu = $request->id_menu;
         $harga_menu = $request->harga_menu;
         $jumbel_menu = $request->jumbel_menu;
@@ -126,9 +130,9 @@ class ItsfoodController extends Controller
     {
         $this->validate($request, [
             'nama_pelanggan' => 'required',
-            'username' => 'required',
+            'username' => 'required|unique:table_users_pelanggan',
             'email_pelanggan' => 'required|email',
-            'password' => 'required'
+            'password' => 'required|min:8|confirmed'
         ]);
         
         $userspelanggan = UsersPelanggan::create(request(['nama_pelanggan', 'username', 'email_pelanggan', 'password']));
@@ -147,18 +151,14 @@ class ItsfoodController extends Controller
     {
         if (!Session::has('keranjang')) {
             if (auth('pelanggan')->attempt(request(['username', 'password'])) == false) {
-                return back()->withErrors([
-                    'message' => 'The email or password is incorrect, please try again'
-                ]);
+                return redirect()->route('masuk')->with('fail', 'Username dan Password tidak valid');
             }
             return redirect()->to('/itsfood')->with('login', 'Hai');
         }
 
         if (Session::has('keranjang')) {
             if (auth('pelanggan')->attempt(request(['username', 'password'])) == false) {
-                return back()->withErrors([
-                    'message' => 'The email or password is incorrect, please try again'
-                ]);
+                return redirect()->route('masuk')->with('fail', 'Username dan Password tidak valid');
             }
             return redirect()->route('keranjang')->with('login', 'Hai');
         }
@@ -166,6 +166,10 @@ class ItsfoodController extends Controller
 
     public function profil($id_pelanggan)
     {
+        if (is_null(auth('pelanggan')->user()))
+        {
+            return view('itsfood.login');
+        }
         $pelanggan = UsersPelanggan::find($id_pelanggan);
         return view('Itsfood.profil', compact('pelanggan'));
     }
