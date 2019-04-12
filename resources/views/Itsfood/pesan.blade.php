@@ -175,10 +175,32 @@
     <div class="kolom12 content">
             <div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-3">
                 <center><h2>Pesanan Anda</h2></center>
-                <h3 style="margin: 5px 0 10px 0; float:left">Total Pesanan Anda : <span class="label label-info" style="float:right; margin-left:8px"> Rp. {{ number_format($total) }}</span></h3><br><br>
+                <h3 style="margin: 5px 0 10px 0; float:left">Total Pesanan Anda : <span class="label label-info" style="float:right; margin-left:8px"> Rp. {{ number_format($totalPembelian) }}</span></h3><br><br>
                 <div id="charge-error" class="alert alert-danger {{ !Session::has('error') ? 'hidden' : '' }}">{{ Session::get('error')  }}</div>
                 <form action="{{ route('pesan.submit') }}" method="post" id="form-pesan">
                  @csrf
+                 @if(Session::has('keranjang'))
+                        @foreach($menus as $nomor => $menu)
+                        <div class="col-xs-12">
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <div class="form-group">
+                                        <label for="no-hp-pelanggan" style="display:none;">{{ $menu['menu']['nama_menu']}}</label>
+                                        <input type="text" style="display:none;" name="id_menu[]" value="{{ $menu['menu']['id_menu']}}" class="form-control" readonly required>
+                                        <input type="text" style="display:none;" name="harga_menu[]" value="{{ $menu['harga_menu']}}" class="form-control" readonly required>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-6">
+                                    <div class="form-group">
+                                        <label for="tanggal-pembelian" style="display:none;">Jumlah Beli</label>
+                                        <input type="text" style="display:none;" name="jumbel_menu[]" value="{{ $menu['jumbel']}}" class="form-control" readonly required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    @endif
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="form-group">
@@ -212,12 +234,6 @@
                             <div class="form-group">
                                 <label for="alamat">Alamat</label>
                                 <textarea type="text" name="alamat_pelanggan" id="alamat" class="form-control" required></textarea>
-                            </div>
-                        </div>
-                        <div class="col-xs-12">
-                            <div class="form-group">
-                                <label for="card-name">Card Holder Name</label>
-                                <input type="text" name="" id="card-name" class="form-control" required>
                             </div>
                         </div>
                         <div class="col-xs-12">

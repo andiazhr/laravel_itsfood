@@ -19,7 +19,7 @@ Route::resource('menu', 'MenuController');
 
 Route::resource('pembelian', 'PembelianController');
 
-Route::resource('users', 'UsersController');
+Route::resource('admins', 'UsersController');
 
 Route::resource('userspelanggan', 'UsersPelangganController');
 

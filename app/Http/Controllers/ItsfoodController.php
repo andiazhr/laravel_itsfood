@@ -59,7 +59,7 @@ class ItsfoodController extends Controller
     {       
         if (is_null(auth('pelanggan')->user()))
         {
-            return view('itsfood.login');
+            return redirect()->route('masuk')->with('login', 'Harus Login Terlebih Dahulu');
         }
         $id_menu = $request->id_menu;
         $harga_menu = $request->harga_menu;
@@ -234,15 +234,14 @@ class ItsfoodController extends Controller
     {
         if (is_null(auth('pelanggan')->user()))
         {
-            return view('itsfood.login');
+            return redirect()->route('masuk')->with('login', 'Harus Login Terlebih Dahulu');
         }
         if (!Session::has('keranjang')) {
             return view ('itsfood.keranjang');
         }
         $Keranjanglama = Session::get('keranjang');
         $keranjang = new Keranjang($Keranjanglama);
-        $total = $keranjang->totalPembelian;
-        return view ('itsfood.pesan', ['total' => $total]);
+        return view ('itsfood.pesan', ['menus' => $keranjang->menus, 'totalPembelian' => $keranjang->totalPembelian]);
     }
 
     public function addPesan(Request $request)
@@ -262,19 +261,21 @@ class ItsfoodController extends Controller
                 "description" => "Test charge"
               ]);
 
-            $harga = $keranjang->hargaMenu;
-            for ($i = 0; $i < count($harga); $i++){
-            $pembelian = new Pembelian();
-            $pembelian->id_pelanggan = $request->input('id_pelanggan');
-            $pembelian->id_menu= $keranjang->idMenu;
-            $pembelian->harga_menu = $keranjang->hargaMenu;
-            $pembelian->jumbel_menu = $keranjang->totalJumbel;
-            $pembelian->no_hp_pelanggan = $request->input('no_hp_pelanggan');
-            $pembelian->alamat_pelanggan = $request->input('alamat_pelanggan');
-            $pembelian->total_pembelian = $keranjang->totalPembelian;
-            $pembelian->tanggal_pembelian = $request->input('tanggal_pembelian');
-            $pembelian->save();
-            }
+              $id_menu = $request->id_menu;
+              $harga_menu = $request->harga_menu;
+              $jumbel_menu = $request->jumbel_menu;
+                for ($i = 0; $i < count($id_menu); $i++){
+                      $pesan = new Pembelian();
+                      $pesan->id_pelanggan = $request->input('id_pelanggan');
+                      $pesan->id_menu = $id_menu[$i];
+                      $pesan->harga_menu = $harga_menu[$i];
+                      $pesan->jumbel_menu = $jumbel_menu[$i];
+                      $pesan->no_hp_pelanggan = $request->input('no_hp_pelanggan');
+                      $pesan->alamat_pelanggan = $request->input('alamat_pelanggan');
+                      $pesan->total_pembelian = $keranjang->totalPembelian;
+                      $pesan->tanggal_pembelian = $request->input('tanggal_pembelian');
+                      $pesan->save();
+                }            
             
         } catch (\Exception $e){
             return redirect()->route('pesan')->with('error', $e->getMessage());
@@ -288,7 +289,7 @@ class ItsfoodController extends Controller
     {
         if (is_null(auth('pelanggan')->user()))
         {
-            return view('itsfood.login');
+            return redirect()->route('masuk')->with('login', 'Harus Login Terlebih Dahulu');
         }
         $SM = new SaranMasukkan([
             'id_pelanggan' => $request->get('id_pelanggan'),

@@ -23,7 +23,7 @@ class UsersController extends Controller
             ->orWhere('email', 'like', "%{$request->user}%");
         })->get();
         
-        return view('Users.index', compact('users'));
+        return view('Admins.index', compact('users'));
     }
 
     /**
@@ -56,7 +56,7 @@ class UsersController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        return view ('Users.info', compact('user'));
+        return view ('Admins.info', compact('user'));
     }
 
     /**

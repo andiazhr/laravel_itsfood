@@ -2,13 +2,13 @@
 @section('content')
 <section class="content-header">
       <h1>
-        Table Users
+        Table Admins
         <small>Index</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="#">Tables</a></li>
-        <li class="active">Users</li>
+        <li class="active">Admins</li>
       </ol>
     </section>
 
@@ -24,7 +24,7 @@
           <div class="box">
             <!-- /.box-header -->
             <div class="box-header">
-              <h3 class="box-title" style="margin: 0 20px 0 0">Users</h3>
+              <h3 class="box-title" style="margin: 0 20px 0 0">Admins</h3>
               <div class="box-tools">
               <form action="{{ url()->current() }}">
                 <div class="input-group input-group-sm" style="width: 200px;">
@@ -58,14 +58,14 @@
                         <td>{{$user->created_at}}</td>
                         <td>{{$user->updated_at}}</td>
                         <td>
-                          <form action="{{ route('users.destroy', $user->id)}}" method="post">
+                          <form action="{{ route('admins.destroy', $user->id)}}" method="post">
                               @csrf
                               @method('DELETE')
                               <button onclick="return confirm('Yakin ingin menghapus data?')" class="btn btn-danger btn-sm" type="submit"><i class="fa fa-trash"></i></button>
                           </form>
                         </td>
                         <td>
-                          <a href="{{ route('users.show',$user->id)}}" class="btn btn-info btn-sm"><i class="fa fa-info"></i></a>
+                          <a href="{{ route('admins.show',$user->id)}}" class="btn btn-info btn-sm"><i class="fa fa-info"></i></a>
                         </td>
                     </tr>
                 @endforeach

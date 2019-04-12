@@ -4,13 +4,13 @@
 @section('content')
     <section class="content-header">
       <h1>
-        Form Makanan
+        Form Tambah Menu
         <small>Form</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="{{ url('menu') }}"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="{{ url('menu/create') }}">Tambah</a></li>
-        <li class="active">Makanan</li>
+        <li class="active">Menu</li>
       </ol>
     </section>
 
@@ -31,7 +31,7 @@
           <!-- general form elements -->
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Tambah Makanan</h3>
+              <h3 class="box-title">Tambah Menu</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
@@ -40,7 +40,7 @@
               @csrf
               <div class="col-md-6">
                   <div class="form-group">
-                    <label>Nama Makanan</label>
+                    <label>Nama Menu</label>
                     <input type="text" class="form-control" name="nama_menu" placeholder="Masukkan Nama Menu">
                   </div>
 
@@ -52,7 +52,7 @@
                   </div>
                   
                   <div class="form-group">
-                  <label>Deskripsi Makanan</label>
+                  <label>Deskripsi Menu</label>
                   <textarea type="text" class="form-control" name="deskripsi_menu" placeholder="Masukkan Deskripsi Menu"></textarea>
                   </div>
                 </div>

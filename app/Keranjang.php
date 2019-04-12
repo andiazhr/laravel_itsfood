@@ -7,16 +7,15 @@ class Keranjang
     public $menus = null;
     public $idMenu = 0;
     public $hargaMenu = 0;
-    public $jumbelMenu = 0;
     public $totalJumbel = 0;
     public $totalPembelian = 0;
 
     public function __construct($Keranjanglama)
     {
         if($Keranjanglama) {
-            $this->menus = $Keranjanglama->menus;
             $this->idMenu = $Keranjanglama->idMenu;
             $this->hargaMenu = $Keranjanglama->hargaMenu;
+            $this->menus = $Keranjanglama->menus;
             $this->totalJumbel = $Keranjanglama->totalJumbel;
             $this->totalPembelian = $Keranjanglama->totalPembelian;
         }
@@ -35,7 +34,6 @@ class Keranjang
         $this->menus[$id_menu] = $storedMenu;
         $this->idMenu = $menu->id_menu;
         $this->hargaMenu = $menu->harga_menu;
-        $this->jumbelMenu = $menu->jumbel_menu;
         $this->totalJumbel++;
         $this->totalPembelian += $menu->harga_menu;
     }

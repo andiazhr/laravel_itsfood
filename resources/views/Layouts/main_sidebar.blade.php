@@ -40,7 +40,7 @@
           <ul class="treeview-menu">
             <li><a href="{{ url('menu') }}"><i class="fa fa-circle-o"></i> Menu</a></li>
             <li><a href="{{ url('pembelian') }}"><i class="fa fa-circle-o"></i> Pembelian</a></li>
-            <li><a href="{{ url('users') }}"><i class="fa fa-circle-o"></i> Users</a></li>
+            <li><a href="{{ url('admins') }}"><i class="fa fa-circle-o"></i> Admins</a></li>
             <li><a href="{{ url('userspelanggan') }}"><i class="fa fa-circle-o"></i> Users Pelanggan</a></li>
             <li><a href="{{ url('saranmasukkan') }}"><i class="fa fa-circle-o"></i> Saran dan Masukkan</a></li>
           </ul>

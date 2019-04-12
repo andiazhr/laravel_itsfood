@@ -174,11 +174,21 @@
     </div>
 </div>
 
-    @if(session()->get('fail'))
+        @if(session()->get('fail'))
 			<div class="kolom12">
 				<div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-3" style="text-align:center; font-size:20px; top:30px;">
               		<div class="alert alert-danger">
                 		{{ session()->get('fail') }} <img src="{{ asset ('assets/images/attention.png') }}" alt="Jet" style="width:36px;height:36px;">
+              		</div>
+			  	</div>
+			</div>
+         @endif
+         
+         @if(session()->get('login'))
+			<div class="kolom12">
+				<div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-3" style="text-align:center; font-size:20px; top:30px;">
+              		<div class="alert alert-info">
+                		{{ session()->get('login') }} <img src="{{ asset ('assets/images/login3.png') }}" alt="Jet" style="width:36px;height:36px;">
               		</div>
 			  	</div>
 			</div>

@@ -345,11 +345,11 @@
 								Nama : <br><input type="text" class="form-control" readonly placeholder="Nama Anda"><br>
 								@endif
 
-								No. HP : <br><input type="number" class="form-control" name="no_hp_pelanggan" placeholder="No. HP" requied><br>
+								No. HP : <br><input type="number" class="form-control" name="no_hp_pelanggan" placeholder="No. HP" required><br>
 
 								Tanggal : <br><input type="text" class="form-control" readonly name="tanggal_pembelian" value="<?php echo date('Y-m-d') ?>"><br>
 
-								Alamat : <br><textarea type="text" maxlength="170" class="form-control" name="alamat_pelanggan" placeholder="Alamat"requied></textarea><br>
+								Alamat : <br><textarea type="text" maxlength="170" class="form-control" name="alamat_pelanggan" placeholder="Alamat"required></textarea><br>
 								</div>
 
 								<div class="kolom6" style="padding:0 50px 5px 50px; margin:-80px 0 0 0">
@@ -357,7 +357,7 @@
 
 								Pilih Makanan : <br>
 								<select class="form-control makanan" name="id_menu[]">
-									<option value="-">Pilih Makanan</option>
+									<option value="0">Pilih Makanan</option>
 									@foreach($eat as $makanan)
 									<option value="{{$makanan->id_menu}}|{{$makanan->harga_menu}}">{{$makanan->nama_menu}} </option>
 									@endforeach
@@ -366,26 +366,26 @@
 								Harga Makanan : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Jumlah Beli Makanan :  <br>
 								<input type="number" readonly style="margin-right:16.66%" name="harga_menu[]" class=" kolom5 form-control" id="hargamakanan">
 								
-								<input type="number" class="kolom5 form-control" name="jumbel_menu[]" id="jumbel_makanan" placeholder="Jumlah Beli"><br><br><br>
+								<input type="number" value="0" class="kolom5 form-control" name="jumbel_menu[]" id="jumbel_makanan" placeholder="Jumlah Beli"><br><br><br>
 
 								Pilih Minuman : <br>
 								<select class="form-control minuman" name="id_menu[]">
-									<option value="-">Pilih Minuman</option>
+									<option value="0">Pilih Minuman</option>
 									@foreach($drink as $minuman)
 									<option value="{{$minuman->id_menu}}|{{$minuman->harga_menu}}">{{$minuman->nama_menu}}</option>
 									@endforeach
 								</select> <br>
 
-								Harga Minuman : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Jumlah Beli Makanan :  <br>
+								Harga Minuman : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Jumlah Beli Minuman :  <br>
 								<input type="number" readonly style="margin-right:16.66%" name="harga_menu[]" class=" kolom5 form-control" id="hargaminuman">
 								
-								<input type="number" class="kolom5 form-control" name="jumbel_menu[]" id="jumbel_minuman" placeholder="Jumlah Beli"><br><br>
+								<input type="number" value="0" class="kolom5 form-control jumbel_menu" name="jumbel_menu[]" id="jumbel_minuman" placeholder="Jumlah Beli"><br><br>
 								</div>
 								<img src="{{ asset ('assets/images/orderfood3.png') }}" style="width:120px; height: 120px; margin:-170px 0 0 573px; float:left;">
 
-								<div class="kolom12"><div class="kolom2" style="margin: -5px 0 10px 41.66%"><input readonly type="number" class="form-control" name="total_pembelian" id="totalpembelian" style="text-align:center;"></div></div>
-								<button class="btn btn-primary" type="submit" style="margin-left:41%; clear:left; float:left;">Pesan</button>
-								<button class="btn btn-default" type="reset" style="margin-left:15px; float:left;">Reset</button><input class="btn btn-default" type="button" value="Hitung" onclick="hitung()" style="margin-left:15px; float:left;"></h4>
+								<div class="kolom12"><div class="kolom2" style="margin: -5px 0 10px 41.66%"><input readonly type="number" class="form-control" name="total_pembelian" id="totalpembelian" style="text-align:center;" required></div></div>
+								<button class="btn btn-primary" type="submit" style="margin-left:44.33%; clear:left; float:left;">Pesan</button>
+								<button class="btn btn-default" type="reset" style="margin-left:15px; float:left;">Reset</button>
 							</form>
 				</div>
 			</div>
@@ -764,7 +764,7 @@
 		</script>
 		
 		<script src="{{ asset('assets/aos.js') }}"></script>
-		
+
 		<script>
 			AOS.init();
 		</script>
@@ -784,53 +784,33 @@
             $("#hargaminuman").val(combined);
         }).trigger("change");
 		</script>
+
+		<script>
+		$("#jumbel_makanan").change(function() {
+			var hargamakanan = parseFloat(document.getElementById("hargamakanan").value);
+            var jumbelmakanan = parseFloat(document.getElementById("jumbel_makanan").value);  // here you'll get the second value, [0] will get the first one
+            $("#totalpembelian").val(hargamakanan*jumbelmakanan);
+        }).trigger("change");
+		</script>
+
+		<script>
+		$("#jumbel_minuman").change(function() {
+			var hargaminuman = parseFloat(document.getElementById("hargaminuman").value);
+            var jumbelminuman = parseFloat(document.getElementById("jumbel_minuman").value);  // here you'll get the second value, [0] will get the first one
+            $("#totalpembelian").val(hargaminuman*jumbelminuman);
+        }).trigger("change");
+		</script>
+
+		<script>
+		$("#jumbel_makanan").change(function() {
+			var hargamakanan = parseFloat(document.getElementById("hargamakanan").value);
+			var jumbelmakanan = parseFloat(document.getElementById("jumbel_makanan").value);
+			var hargaminuman = parseFloat(document.getElementById("hargaminuman").value);
+			var jumbelminuman = parseFloat(document.getElementById("jumbel_minuman").value);  // here you'll get the second value, [0] will get the first one
+			$("#totalpembelian").val((hargaminuman*jumbelminuman+(hargamakanan*jumbelmakanan)));
+		}).trigger("change");
+		</script>
 		
-		<script language= "JavaScript">
-        function hitung()
-
-        {
-        var hmakanan=parseFloat(document.getElementById("hargamakanan").value);
-        var jmakanan=parseFloat(document.getElementById("jumbel_makanan").value);
-        var hminuman=parseFloat(document.getElementById("hargaminuman").value);
-        var jminuman=parseFloat(document.getElementById("jumbel_minuman").value);
-
-        var hasil="";
-
-            total=(hmakanan*jmakanan+(hminuman*jminuman));
-            hasil=hasil+total;
-
-
-        document.getElementById('pesan').total_pembelian.value=hasil;
-
-        }
-        </script>
 		<script>$('div.alert').delay(7000).slideUp(300);</script>
-
-		<!-- <script type="text/javascript">
-		$(document).ready(function(){
-			$("select.makanan").change(function(){
-				var selectedMakanan = $(this).children("option:selected").val();
-				$('#hargamakanan').val(selectedMakanan);
-			});
-		});
-		</script> -->
-		
-		<!-- <script type="text/javascript">
-		$(document).ready(function(){
-			$("select.minuman").change(function(){
-				var selectedMinuman = $(this).children("option:selected").val();
-				$('#hargaminuman').val(selectedMinuman);
-			});
-		});
-		</script> -->
-
-<!-- <script type="text/javascript">
-		$(document).ready(function(){
-			$("select.menu").change(function(){
-				var selectedMenu = $(this).children("option:selected").val();
-				var select = document.getElementById("select");
-			});
-		});
-		</script> -->
 </body>
 </html>
