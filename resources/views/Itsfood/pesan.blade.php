@@ -187,7 +187,7 @@
                                     <div class="form-group">
                                         <label for="no-hp-pelanggan" style="display:none;">{{ $menu['menu']['nama_menu']}}</label>
                                         <input type="text" style="display:none;" name="id_menu[]" value="{{ $menu['menu']['id_menu']}}" class="form-control" readonly required>
-                                        <input type="text" style="display:none;" name="harga_menu[]" value="{{ $menu['harga_menu']}}" class="form-control" readonly required>
+                                        <input type="text" style="display:none;" name="harga_menu[]" value="{{ $menu['menu']['harga_menu']}}" class="form-control" readonly required>
                                     </div>
                                 </div>
 

@@ -327,7 +327,6 @@
 		@endforeach
 		
 		<div class="kolom12 main" data-aos="zoom-in" id="Pesan">
-			<div class="imageback2">
 				<div class="backpesan">
 				<img src="{{ asset('assets/images/orderfood.png') }}" style="margin:20px 0px 20px 110px; width:120px; height: 120px; float:left; image-orientation: 90deg;">
 						<h1 style="margin:40px 0px 40px 280px; float:left;">Pesan <strong>Sekarang</strong></h1><img src="{{ asset('assets/images/orderfood2.png') }}" style="margin:20px 0px 20px 260px; width:120px; height: 120px; float:left; image-orientation: 90deg;">
@@ -379,7 +378,7 @@
 								Harga Minuman : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Jumlah Beli Minuman :  <br>
 								<input type="number" readonly style="margin-right:16.66%" name="harga_menu[]" class=" kolom5 form-control" id="hargaminuman">
 								
-								<input type="number" value="0" class="kolom5 form-control jumbel_menu" name="jumbel_menu[]" id="jumbel_minuman" placeholder="Jumlah Beli"><br><br>
+								<input type="number" value="0" class="kolom5 form-control" name="jumbel_menu[]" id="jumbel_minuman" placeholder="Jumlah Beli"><br><br>
 								</div>
 								<img src="{{ asset ('assets/images/orderfood3.png') }}" style="width:120px; height: 120px; margin:-170px 0 0 573px; float:left;">
 
@@ -388,7 +387,6 @@
 								<button class="btn btn-default" type="reset" style="margin-left:15px; float:left;">Reset</button>
 							</form>
 				</div>
-			</div>
 		</div>
 		
 		<div class="kolom12">
@@ -802,7 +800,7 @@
 		</script>
 
 		<script>
-		$("#jumbel_makanan").change(function() {
+		$("#jumbel_minuman").change(function() {
 			var hargamakanan = parseFloat(document.getElementById("hargamakanan").value);
 			var jumbelmakanan = parseFloat(document.getElementById("jumbel_makanan").value);
 			var hargaminuman = parseFloat(document.getElementById("hargaminuman").value);
@@ -811,6 +809,6 @@
 		}).trigger("change");
 		</script>
 		
-		<script>$('div.alert').delay(7000).slideUp(300);</script>
+		<script>$('div.alert').delay(5000).slideUp(300);</script>
 </body>
 </html>

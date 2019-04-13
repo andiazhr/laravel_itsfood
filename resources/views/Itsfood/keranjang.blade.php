@@ -206,7 +206,7 @@
         </div>
         <div class="kolom12"><hr></div>
         <div class="kolom12">
-            <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+            <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3" style="margin-bottom:40px">
                 <a href="{{ url('itsfood') }}#myMenu" class="btn btn-default" type="button">Pesan Menu Lagi</a>
                 <a href="{{ route('pesan')}}" class="btn btn-success" type="button">Pesan</a>
             </div>
